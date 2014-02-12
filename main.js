@@ -3,7 +3,7 @@ var http = require('./http/miniHttp.js');
 var pathLib = require('path');
 var users = require('./users.js');
 var uuid = require('node-uuid');
-var port = process.env.PORT || 9134;
+var port = process.env.PORT || 80;
 var app = express();
 
 console.log('Mounting '+'/'+' at '+__dirname+'\\www');

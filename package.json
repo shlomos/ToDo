@@ -1,0 +1,16 @@
+{
+  "name": "todo.shlomo.shenzis",
+  "description": "A to-do List with data in the cloud.",
+  "author": "Shlomo Shenzis<shlomo.shenzis@mail.huji.ac.il>",
+  "version": "0.1.1",
+  "main": "main.js",
+  "dependencies": {
+	"mini.express.shlomo.shenzis": "0.1.5",
+	"node-uuid": "1.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shloms/ToDo"
+  },
+  "engine": "node >= 0.10.22"
+}
