@@ -1,0 +1,11 @@
+Major features of javascript that does not exist in Java:
+1. Each variable (primitive or object) can be created dynamically without
+   declaring the type, meaning, that it can hold different types during runtime.
+   Javascript is also able store different types in one array.
+2. Code can be injected at runtime as a string, as opposed to java where all code
+   must be compiled first.
+3. Javascript supports closures (although Java supports it too, but only in the
+   latest version).
+4. In javascript there are no classes. If not a primitive any element is an object.
+   This object can be modified at anytime, it is possible to add methods and members
+   at any stage of the program.

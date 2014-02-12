@@ -1,0 +1,50 @@
+// ~10 Asynchronous lines of code:
+function task(){
+	var k = 0;
+	alert ('Started the task!');
+	var text = document.getElementById('textbox1');
+	var but1 = document.getElementById('but1');
+	but1.addEventListener('click',function (event) {
+		alert('button 1 pressed!');
+	});
+	var id = setTimeout(function(){
+		alert('time out!');
+	}, 2000);
+	
+	for(var i=0;i<10000000;i++){
+		text.value = i+"'s step";
+	}
+	alert('finished!');
+}
+task();
+
+/*
+	1)First the k will be initializes with zero.
+	2)An alert will be displayed 'Started the task!'.
+	3)the input textbox and the button will be searched and found
+	  in the document and saved in text and but1 vars.
+	4)An event listener will be passed to the according I/O driver
+	  in this case the mouse driver to shoot click events
+	  Those events will enter a queue outside the flow of the synchronous 
+	  code.
+	5)A time-out listener will be passed to the driver responsible of time
+	  continuum and the last will shoot on time out into the queue outside
+	  the flow of the synchronous code.
+	6)The for loop will do 10,000,000 iterations changing the value of the 
+	  textbox and an alert will be shown 'finished'
+	7)Now, after the synchronous code finished the a-sync queue will be dealt
+	  with. If the button was pressed before the 2 seconds timer shot,thus registering
+	  the click event before the timer into the queue an alert 'button 1 pressed!' 
+	  will be shown and then the alert 'time out!' will be shown as well.
+		
+	  If the button wasn't clicked until the timer ran out of the 2 seconds
+	  the time-out event was registered first into the a-sync queue and the 
+	  alert 'time out!' will be shown and after that the alert 'button 1 pressed!'
+	  will be shown.
+
+	  If the button wasn't clicked only the 'time out!' alert will be shown.
+
+	  Of course, if the button was clicked several times and the 2 seconds 
+	  ended between clicks the 'time out!' alert will be between two "blocks"
+	  of 'button 1 pressed!' alerts.
+*/

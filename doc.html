@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>doc.html</title>
+</head>
+<body>
+<marquee style="background:grey;color:white"> Created By:Shlomo Shenzis - sshenz62 - 203843933</marquee>
+<div style="left:25%;width:50%;position: absolute;">
+<h1 style="color:#FF0000">Tester.js</h1>
+<p>
+tester.js creates an instance of the miniExpress server<br/>
+and starts listening on port 9134(to avoid interference with the system)<br/>
+Every 1 second a request is being made to the server using the http module.<br/>
+The in order they appear are:<br/>
+<br/>
+<h2>Static tests:</h2>
+1. Get the index.html from the server explicitly. -(1924 bytes)<br/>
+2. Get the index.html by only mentioning the directory path using the conventional behaviour. - (1924 bytes)<br/>
+3. Try to get a resource not present on server. - status 404<br/>
+4. Send a POST request to the server with no POST handler. - status 404</br>
+5. A request with an illegal method - parsing error. - status 500<br/>
+6. Try and initiate a traversing attack on the server. - status 404</br>
+7. Get the index.js javascript file. - (763 bytes)<br/>
+8. Get the style.css CSS file. - (2787 bytes)<br/>
+9. Get the photo.jpg image file. - (62915 bytes)<br/>
+10. Get the profile.html file and test the 'Connection:close' header. - (1924 bytes)<br/>
+11. Test unsupported HTTP/2.1 protocol. - Expect status 500 then a time-out in 2 seconds<br/>
+12. Test sending multiple requests on same connection (concatenated requests). - Expect both files.<br/>
+13. Test sending a request where the body is separated from the headers (chunked) - Expect the file asked. (2073 bytes) and time-out (179 bytes)<br/>
+<h2>Dynamic tests:</h2>
+1.	Create a server with POST and GET handlers with bodyParser and CookieParser.</br></li>
+2.	Print the app.routes .</br>
+3.	<ol>
+	<li>Send POST request to the parametrized (:name) path with urlencoded body and cookies.</li>
+	<li>Print the params (Expect: sshenz62 as :name).</li>
+	<li>Print urlencoded decoded body.</li>
+	<li>Print Cookies.</li>
+	<li>Send status 200.(Expect: 24 bytes of body).</li>
+	</ol>
+4.	<ol>
+	<li>Send GET request with url query ?q=house+horse.</li>
+	<li>Print decoded query.</li>
+	<li>Set 2 set-cookies to the client with properties.</li>
+	<li>Send status 200. (Expect 24 bytes of body and the cookies). </li>
+	</ol>
+</p>
+<p>
+<h2>Remarks:</h2>
+To be able to test all file formats the test only print the length of the body (Except for tests 10,12)</br>
+without the content.
+</p>
+<p>
+After the tests the server waits for 1 second for a time-out and closes.</br>
+Overall tester duration is 23 Sec.
+</p>
+</div>
+</body>
+</html>

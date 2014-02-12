@@ -1,0 +1,1 @@
+var exports = module.exports = {MAX_FILE_BUFFER: 5000,DIR_INDEX_NAME: 'index.html'};

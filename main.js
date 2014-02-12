@@ -6,7 +6,7 @@ var uuid = require('node-uuid');
 var port = process.env.PORT || 80;
 var app = express();
 
-console.log('Mounting '+'/'+' at '+__dirname+'\\www');
+console.log('Mounting '+'/'+' at '+__dirname+'/www');
 
 //Parsing params:
 
@@ -89,7 +89,7 @@ app.get('/logout', function(req,res){
 app.use(auth());
 
 //Static response:
-app.use(express.static(__dirname+'\\www'));
+app.use(express.static(__dirname+'/www'));
 
 //To do operations:
 app.get('/item', function(req, res){
