@@ -1,0 +1,73 @@
+<div class="container-row fade in">
+		<div class="page-header"> 
+		<h1 class="col-md-offset-3" style="color: #820b1a">To-Do List <small>Login and Registration</small></h1>
+		</div>
+		
+		<!--Login-->
+		
+		<div class="col-md-6 col-md-offset-3 well">
+		  <form class="form-inline" role="form" name="formLog">
+			<h1><small>Login</small></h1>
+			<div class="form-group">
+				<label class="sr-only" for="usernameLog">Username</label>
+				<input name="userLog" type="text" class="form-control input-lg" placeholder="Enter your username" required ng-model="userLog" ng-trim="false" autofocus>
+				</div>
+			<div class="form-group">
+				<label class="sr-only" for="passwordLog">Password</label>
+				<input name="passLog" type="password" class="form-control input-lg" placeholder="Password" required ng-model="passLog" ng-trim="false">
+			</div>
+			<button type="button" class="btn btn-success btn-lg" ng-disabled="formLog.$invalid" ng-click="loginUser()">Sign in</button>
+			<br>
+			<div class="checkbox">
+				<label>
+				<input type="checkbox" ng-model="rememberMe"> Remember me
+				</label>
+			</div>
+			<span class="help-block error" style="color: red">{{msgLog}}</span>
+			</form>
+		</div>
+		
+		<!--Registration-->
+		
+		<div class="col-md-6 col-md-offset-3 well">
+			<form name="form" role="form">
+				<h1><small>Register</small></h1>
+				<div class="form-group" ng-class="{ 'has-error': form.user.$dirty && form.user.$invalid , 'has-success': !form.user.$invalid}">
+					<label for="user">Username</label>
+					<input name="user" type="text" class="form-control input-lg" placeholder="Username" ng-model="user"
+                        ng-pattern="upPattern" required ng-trim="false" ng-maxlength="20">
+					<span class="help-block" ng-show='form.user.$dirty && form.user.$error.required'>Field required.</span>
+					<span class="help-block" ng-show='form.user.$dirty && form.user.$error.pattern'>Illegal username!</span>
+					<span class="help-block" ng-show='form.user.$dirty && form.user.$error.maxlength'>Username too long! (max: 20)</span>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error': form.pass.$dirty && form.pass.$invalid , 'has-success': !form.pass.$invalid}">
+					<label for="pass">Password</label>
+					<input name="pass" type="password" class="form-control input-lg" id="pass" placeholder="Password" ng-model="pass"
+                        ng-pattern="upPattern" required ng-trim="false" ng-maxlength="30" ng-minlength="6">
+					<span class="help-block" ng-show='form.pass.$dirty && form.pass.$error.required'>Field required.</span>
+					<span class="help-block" ng-show='form.pass.$dirty && form.pass.$error.pattern'>Illegal password!</span>
+					<span class="help-block" ng-show='form.pass.$dirty && form.pass.$error.minlength'>Password too short! (min: 6)</span>
+					<span class="help-block" ng-show='form.pass.$dirty && form.pass.$error.maxlength'>Password too long! (max: 30)</span>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error': form.passwordVer.$dirty && form.passwordVer.$invalid , 'has-success': !form.passwordVer.$invalid}">
+					<label for="passwordVer">Verify Password</label>
+					<input name="passwordVer" type="password" class="form-control input-lg" id="passwordVer" ng-model="passwordVer" placeholder="Verify Password"
+                        required ng-trim="false" ui-validate-equals="pass">
+					<span class="help-block" ng-show='form.passwordVer.$dirty && form.passwordVer.$error.equal'>Both passwords must match</span>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error': form.fname.$dirty && form.fname.$invalid , 'has-success': !form.fname.$invalid}">
+					<label for="fname">Full name</label>
+					<input name="fname" type="text" class="form-control input-lg" id="fname" placeholder="What's your name?" ng-model="fname"
+                        ng-pattern="namePattern" required ng-trim="false" ng-maxlength="30">
+				<span class="help-block" ng-show='form.fname.$dirty && form.fname.$error.required'>Field required.</span>
+				<span class="help-block" ng-show='form.fname.$dirty && form.fname.$error.pattern'>Illegal full name!</span>
+				<span class="help-block" ng-show='form.fname.$dirty && form.fname.$error.maxlength'>Full name too long! (max: 50)</span>
+				</div>
+				<span class="help-block error" style="color: red">{{msgReg}}</span>
+				<button type="button" class="btn btn-success btn-lg" ng-disabled="form.$invalid" ng-click="registerUser()">Register</button>
+			</form>
+		</div>
+		
+    </div>
+  </div>
+</div>
