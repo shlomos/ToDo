@@ -1,6 +1,0 @@
-1)middleware static next() instead of 404.
-2)miniHTTP end() method.
-3)Added content-length to miniExpress send (when only status).
-4)Added media types support for: .png and .ico
-5)success on cookie set in parser removed.
-6)on con 'close' event in server response deleted.
