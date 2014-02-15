@@ -1,0 +1,11 @@
+- can your app suffer from XSS? if yes how can you fix it? if not why not?
+	-No, all the information posted to the server by the user is converted to
+	 string, escaped and never becomes part or evaluated as part of the pages HTML code,
+	 hence, an attacker cannot plant malicious code.
+	 
+- can your app suffer from CSRF? if yes how can you fix it? if not why not?
+	-Yes, if an attacker manages to, through another website, make the user send a specially crafted request
+	 ,say a POST with a todo or even just 'website.com/logout' it may change the user state.
+	 To fix this there are a few possibilities, for example double checking - sending a confirmation request for every
+	 operation, OR adding a key(more specifically hashing with the app given key every request). This way an attacker cannot
+	 make any operation, as he doesn't have the special key.

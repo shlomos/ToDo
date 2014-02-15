@@ -1,0 +1,23 @@
+What was HARD:
+-------------------
+1)Making the login process safe and intuitive was a little challenging.
+2)understanding of angular was non-trivial.
+
+what was EASY:
+-------------------
+1)Using angular making the todo list and the login interactive was really easy!
+2)Building on top of miniExpress(express style) was easy and intuitive.
+
+General Comments:
+-------------------
+I must say that at the beginning of the semester I thought that building server side application on top
+of JavaScript was a bad idea. Now at a perspective of time, I have never been so wrong. The course made me
+dive into a whole new world of Dynamic, Async programming revealing the true beauty and power of Node.JS
+
+Building express; and http module from a scratch was the best way to get fast into business, let alone 
+reading and understanding the HTTP RFC.
+
+Angular was a great bonus that was very interesting to get familiar with.
+
+Thank you very much,
+Shlomo.

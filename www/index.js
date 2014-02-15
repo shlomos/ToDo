@@ -171,8 +171,6 @@ todoApp.controller('ToDoLogin', function ($scope,$rootScope, $http, $location) {
 				}else if(status==500){
 					$scope.msgLog = "Server could not satisfy your request.";
 				}
-				//write to user the error;
-				//alert(status);
 		});
 	}
 });

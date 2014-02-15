@@ -1,33 +1,27 @@
-var express = require('./miniExpress.js');
-var http = require('./http/miniHttp.js');
+var express = require('./express/miniExpress.js');
+var http = require('./express/http/miniHttp.js');
 var pathLib = require('path');
 var users = require('./users.js');
 var uuid = require('node-uuid');
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 9134;
 var app = express();
 
-console.log('Mounting '+'/'+' at '+__dirname+'/www');
-
-//Parsing params:
-
-/* app.use(function(req,res,next){
-	console.log(req.get('content-length'));
-	console.log(req.get('content-type'));
-	console.log(req.headers);
-	console.log(req.body);
-	next();
-});  */
+console.log('Mounting '+'/'+' at '+__dirname+'\\www');
 
 app.use(express.bodyParser());
 app.use(express.cookieParser());
 
+// Cookie authentication:
+app.use(auth());
+
 //Login or Registration;
 app.post('/login', function(req, res){
-	var user;
+	var user,status;
 	console.log('USER POST');
 	//console.log(req.get('content-length')); //DBG
 	if(users.getByName(req.body.username) == undefined){
-		res.send(401,'No such username or password.');
+		status={status: 1,msg:"No such username or password."};
+		res.json(401,status);
 	}else{
 		user = users.getByName(req.body.username);
 		//console.log(req.body.password+":"+user.pass); //DBG
@@ -43,9 +37,11 @@ app.post('/login', function(req, res){
 				path:'/',
 				httpOnly: true
 			});
-			res.send(200);//Allow
+			status={status: 0,msg:""};
+			res.json(status.status===0?200:500,status);
 		}else{
-			res.send(401,'No such username or password.');
+			status={status: 1,msg:"No such username or password."};
+			res.json(401,status);
 		}
 	}
 });
@@ -68,6 +64,7 @@ app.post('/register', function(req, res){
 });
 
 app.get('/logout', function(req,res){
+	console.log('Logging-out user');
 	var cook = req.cookies['usid'];
 	if(cook != undefined){
 		var user = users.getByUID(cook);
@@ -81,15 +78,11 @@ app.get('/logout', function(req,res){
 		}
 	}
 	res.set('Location','/#/login');
-	res.set('Content-length','0');
-	res.send(303);
+	res.json(303,{status:0,msg:""});
 });
 
-// Cookie authentication:
-app.use(auth());
-
 //Static response:
-app.use(express.static(__dirname+'/www'));
+app.use(express.static(__dirname+'\\www'));
 
 //To do operations:
 app.get('/item', function(req, res){
@@ -132,8 +125,7 @@ function auth(){
 			if(user){
 				req.user = user;
 				if(req.path === '/TDlogin.html'){
-					res.set('Content-length','0');
-					res.send(403);
+					res.json(403,{status: 1,msg:"Already logged in!"});
 				}else{
 					next();
 				}
@@ -141,8 +133,7 @@ function auth(){
 		}
 		if(req.user==undefined){
 			if(req.path === '/todoList.html' || req.path.indexOf('/item')===0){
-				res.set('Content-length','0');
-				res.send(401);
+				res.json(401,{status:1,msg:"Must log-in first!"});
 			}else{
 				next();
 			}

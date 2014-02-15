@@ -18,7 +18,6 @@ content.static = function(rootFolder){
 			fs.stat(fullPath, function (err, stats) {
 				var stream;
 				if(err){
-					console.log("could not find: "+fullPath);
 					next();
 					/* error = "The resource "+req.path+" was  not found...";
 					res.send(404,"<html><head><title>Error</title></head>"+

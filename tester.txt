@@ -1,0 +1,32 @@
+Tester Documentation:
+
+Standard tests:
+-----------------
+
+1)Register user (user: 'a', pass:'aaaaaa').
+2)Login this user.
+3-5)Add three todos.
+6)Show all todos
+7)Mark first todo as complete.
+8)Show all todos
+9)Delete second todo.
+10)Show all remaining todos.
+11)delete all todos (-1).
+12)Show all todos, expect none.
+13)logout.
+
+Wrong requests tests:
+----------------------
+
+14)After the logout try to get todos (same as getting todos before logging in).
+15)Try to register a user that already exists(account hijacking attack).
+16)Try to register with illegal params(password too short <6).
+17)Try login with wrong password. 
+
+Worth mentioning:
+------------------
+1)A logout while NOT logged in will do nothing except for login screen redirection.
+2)Register process includes login, i.e. after register you're already logged in and redirected to the todo list.
+	This is intentional (a feature) to make usage more fluent and intuitive.
+3)Username,password and fullname are size restricted and character restricted.
+	Details on the exact restrictions will show-up on the login screen once an illegal input is entered.

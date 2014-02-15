@@ -1,0 +1,5 @@
+Change the 'require' path and add:
+
+<< app.use(app.router); >>
+
+immediately after << app.use(auth()); >> (line 15)
