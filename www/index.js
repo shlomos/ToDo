@@ -1,5 +1,9 @@
 var todoApp = angular.module('todoApp', ['ngRoute']);
 
+
+todoApp.controller('ToDoAbout', function TodoCtrl($scope) {
+});
+
 todoApp.controller('ToDoCtrl', function TodoCtrl($scope, $routeParams,$http, filterFilter) {
 	var todos;
 	$http.get('/item').success(function(data) {
@@ -184,6 +188,10 @@ todoApp.config(function ($routeProvider) {
 	  when('/login', {
         templateUrl: 'TDlogin.html',
         controller: 'ToDoLogin'
+      }).
+	  when('/about', {
+        templateUrl: 'about.html',
+        controller: 'ToDoAbout'
       }).
       when('/:status', {
         templateUrl: 'todoList.html',

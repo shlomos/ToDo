@@ -230,7 +230,7 @@ label[for='toggle-all'] {
 }
 
 #todo-list li .toggle:after {
-	content: 'v';
+	content:  "\2713\0020";
 	/* 40 + a couple of pixels visual adjustment */
 	line-height: 43px;
 	font-size: 20px;

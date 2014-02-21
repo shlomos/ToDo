@@ -1,6 +1,12 @@
 1)middleware static next() instead of 404.
-2)miniHTTP end() method.
+	404 msg commented out and moved to "else if(level >= stack.length){"
+	in proto->handler->next definition.
+2)http->ServerResponse end() method.
+	Added con.end(); if no data not present or null - for intuitivity.
 3)Added content-length to miniExpress send (when only status).
+	"this.set('content-length',0);" - for better readability by browsers.
 4)Added media types support for: .png and .ico
+	In http->IncomingMessage - a client isde dependency.
 5)success on cookie set in parser removed.
-6)on con 'close' event in server response deleted.
+	In http->parser->"success=req.rawCookies.push(reqLine[1]);" - not needed.
+-----------------------------------------------------------------------------
