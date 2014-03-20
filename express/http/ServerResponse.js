@@ -106,7 +106,7 @@ function ServerResponse(con,options){
     }
 	
 	this.getHeader = function(name){
-		return self.headers[name];
+		return self.headers[name.toLowerCase()];
 	}
 	
 	this.removeHeader = function(name){

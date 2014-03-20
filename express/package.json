@@ -1,0 +1,12 @@
+{
+  "name": "mini.express.shlomo.shenzis",
+  "description": "A subset of Express server functionality",
+  "author": "Shlomo Shenzis<shlomo.shenzis@mail.huji.ac.il>",
+  "version": "0.1.5",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shloms/miniExpress"
+  },
+  "engine": "node >= 0.10.22"
+}

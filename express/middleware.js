@@ -9,7 +9,7 @@ content.static = function(rootFolder){
     return function(req,res,next){
 		var fullPath,path,endR=(!res.shouldKeepAlive);
         if(req.method === 'GET'){
-			path = pathLib.normalize(req.path);
+			path = pathLib.normalize(req.url);
             fullPath = rootFolder+path;
 			if(pathLib.extname(fullPath)===''){
                 fullPath = fullPath.concat('/'+settings.DIR_INDEX_NAME);

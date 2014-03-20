@@ -18,15 +18,14 @@ req.__defineGetter__('query',function(){
 });
 
 req.__defineGetter__('path',function(){
-	var url = this.url;
+	var url = this.originalUrl;
 	url = urlLib.parse(url,true);
 	return url.pathname;
 });
 
 req.__defineGetter__('host',function(){
-	var host = this.host;
-	host = urlLib.parse(host,true);
-	return url.hostname;
+	var host = this.headers['host'];
+	return host;
 });
 
 req.get = function(field){
